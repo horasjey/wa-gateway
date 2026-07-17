@@ -7,6 +7,7 @@ services:
     volumes:
       - ./wa_credentials:/app/wa_credentials
       - ./media:/app/media
+      - ./src:/app/src
     ports:
       - "5001:5001"
     environment:
