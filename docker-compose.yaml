@@ -1,14 +1,19 @@
-# docker-compose.yaml
 services:
   wa-gateway:
-    container_name: "wa-gateway"
+    container_name: wa-gateway
     restart: unless-stopped
-    image: mimamch/wa-gateway:latest
+
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    ports:
+      - "5001:5001"
+
+    environment:
+      KEY: "horasjey"
+      NODE_ENV: production
+
     volumes:
       - ./wa_credentials:/app/wa_credentials
       - ./media:/app/media
-      - ./src:/app/src
-    ports:
-      - "5001:5001"
-    environment:
-      - KEY= # make your own api key (optional)
